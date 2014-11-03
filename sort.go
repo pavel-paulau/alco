@@ -1,25 +1,25 @@
 package alco
 
-func merge(array1, array2 []int) []int {
+func merge(leftArray, rightArray []int) []int {
 	var array []int
 	var i, j int
-	for i < len(array1) && j < len(array2) {
-		if array1[i] < array2[j] {
-			array = append(array, array1[i])
+	for i < len(leftArray) && j < len(rightArray) {
+		if leftArray[i] <= rightArray[j] {
+			array = append(array, leftArray[i])
 			i += 1
 		} else {
-			array = append(array, array2[j])
+			array = append(array, rightArray[j])
 			j += 1
 		}
 	}
-	if i == len(array1) {
-		return append(array, array2[j:]...)
+	if i == len(leftArray) {
+		return append(array, rightArray[j:]...)
 	} else {
-		return append(array, array1[i:]...)
+		return append(array, leftArray[i:]...)
 	}
 }
 
-func sort2(array []int) []int {
+func sort(array []int) []int {
 	if array[0] >= array[1] {
 		return []int{array[1], array[0]}
 	} else {
@@ -32,7 +32,7 @@ func MergeSort(array []int) []int {
 		half := len(array) / 2
 		return merge(MergeSort(array[:half]), MergeSort(array[half:]))
 	} else if len(array) == 2 {
-		return sort2(array)
+		return sort(array)
 	} else {
 		return array
 	}
