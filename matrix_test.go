@@ -1,4 +1,4 @@
-package alco
+package algo
 
 import (
 	"testing"

@@ -1,4 +1,4 @@
-package alco
+package algo
 
 func multiplyIterative(a, b [][]int) [][]int {
 	n := len(a)

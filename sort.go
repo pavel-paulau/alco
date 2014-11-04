@@ -1,4 +1,4 @@
-package alco
+package algo
 
 func merge(leftArray, rightArray []int) []int {
 	var array []int

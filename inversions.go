@@ -1,4 +1,4 @@
-package alco
+package algo
 
 func mergeAndCount(leftArray, rightArray []int) (int, []int) {
 	var array []int
