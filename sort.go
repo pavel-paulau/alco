@@ -31,9 +31,8 @@ func mergeSort(array []int) []int {
 		return merge(mergeSort(array[:half]), mergeSort(array[half:]))
 	} else if len(array) == 2 {
 		return sort(array)
-	} else {
-		return array
 	}
+	return array
 }
 
 func choosePivot(array []int) int {
@@ -72,7 +71,6 @@ func quickSort(array []int) []int {
 		leftPartion := quickSort(array[:i])
 		rightPartition := quickSort(array[i+1:])
 		return append(append(leftPartion, array[i]), rightPartition...)
-	} else {
-		return array
 	}
+	return array
 }
