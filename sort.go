@@ -37,16 +37,25 @@ func mergeSort(array []int) []int {
 }
 
 func choosePivot(array []int) int {
-	return array[0]
+	if len(array) >= 3 {
+		middle := len(array) / 2
+		last := len(array) - 1
+		if array[0] < array[middle] && array[middle] < array[last] {
+			return middle
+		} else if array[0] < array[last] && array[last] < array[middle] {
+			return last
+		}
+	}
+	return 0
 }
 
 func quickSort(array []int) []int {
 	if len(array) > 1 {
 		pivot := choosePivot(array)
 
-		i := 1
-		for j := 1; j < len(array); j++ {
-			if array[j] < pivot {
+		i := 0
+		for j := 0; j < len(array); j++ {
+			if j != pivot && array[j] < array[pivot] {
 				swap := array[i]
 				array[i] = array[j]
 				array[j] = swap
@@ -54,13 +63,15 @@ func quickSort(array []int) []int {
 			}
 		}
 
-		swap := array[0]
-		array[0] = array[i-1]
-		array[i-1] = swap
+		if pivot > i {
+			swap := array[pivot]
+			array[pivot] = array[i]
+			array[i] = swap
+		}
 
-		return append(
-			append(quickSort(array[:i-1]), pivot),
-			quickSort(array[i:])...)
+		leftPartion := quickSort(array[:i])
+		rightPartition := quickSort(array[i+1:])
+		return append(append(leftPartion, array[i]), rightPartition...)
 	} else {
 		return array
 	}
