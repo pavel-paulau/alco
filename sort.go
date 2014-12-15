@@ -1,7 +1,7 @@
 package main
 
-func merge(leftArray, rightArray []int) []int {
-	var array []int
+func merge(leftArray, rightArray []int64) []int64 {
+	var array []int64
 	var i, j int
 	for i < len(leftArray) && j < len(rightArray) {
 		if leftArray[i] <= rightArray[j] {
@@ -18,14 +18,14 @@ func merge(leftArray, rightArray []int) []int {
 	return append(array, leftArray[i:]...)
 }
 
-func sort(array []int) []int {
+func sort(array []int64) []int64 {
 	if array[0] >= array[1] {
-		return []int{array[1], array[0]}
+		return []int64{array[1], array[0]}
 	}
 	return array
 }
 
-func mergeSort(array []int) []int {
+func mergeSort(array []int64) []int64 {
 	if len(array) > 2 {
 		half := len(array) / 2
 		return merge(mergeSort(array[:half]), mergeSort(array[half:]))
@@ -35,7 +35,7 @@ func mergeSort(array []int) []int {
 	return array
 }
 
-func choosePivot(array []int) int {
+func choosePivot(array []int64) int {
 	if len(array) >= 3 {
 		middle := len(array) / 2
 		last := len(array) - 1
@@ -48,7 +48,7 @@ func choosePivot(array []int) int {
 	return 0
 }
 
-func quickSort(array []int) []int {
+func quickSort(array []int64) []int64 {
 	if len(array) > 1 {
 		pivot := choosePivot(array)
 
