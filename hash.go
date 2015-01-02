@@ -66,7 +66,7 @@ func findWindow(array []int64, window int64, initIdx int) int {
 }
 
 func findExistingSums(array []int64, tMin, tMax int64) int {
-	array = mergeSort(array)
+	array = quickSort(array)
 	min := array[0]
 	max := array[len(array)-1]
 	sums := map[int64]bool{}

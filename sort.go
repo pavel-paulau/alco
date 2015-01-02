@@ -55,6 +55,9 @@ func quickSort(array []int64) []int64 {
 		i := 0
 		for j := 0; j < len(array); j++ {
 			if j != pivot && array[j] < array[pivot] {
+				if i == pivot {
+					pivot = j
+				}
 				swap := array[i]
 				array[i] = array[j]
 				array[j] = swap
